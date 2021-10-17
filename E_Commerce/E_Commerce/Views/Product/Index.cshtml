@@ -1,0 +1,23 @@
+﻿@model List<E_Commerce.Models.Entities.Product>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<h3>All Products</h3>
+<table class="table table-striped">
+    <tr>
+        <th>Id</th>
+        <th>Item</th>
+        <th></th>
+    </tr>
+    @foreach (var p in Model)
+        {
+            <tr>
+                <td>@p.Id</td>
+                <td>@p.Item</td>
+                <td><a href="" class="btn btn-success">Add</a></td>
+            </tr>
+        }
+</table>
+
