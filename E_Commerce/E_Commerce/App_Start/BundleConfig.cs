@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 
-namespace E_Commerce
+namespace e_commerce
 {
     public class BundleConfig
     {

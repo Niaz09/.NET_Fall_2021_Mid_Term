@@ -8,17 +8,17 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{83E6CD0C-5696-4A9A-A8E8-40B8BF8120CA}</ProjectGuid>
+    <ProjectGuid>{38D7F6C6-CAB1-4639-91B6-4CA66D56E7A4}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>E_Commerce</RootNamespace>
-    <AssemblyName>E_Commerce</AssemblyName>
+    <RootNamespace>e_commerce</RootNamespace>
+    <AssemblyName>e_commerce</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort>44343</IISExpressSSLPort>
+    <IISExpressSSLPort>44315</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -45,10 +45,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -121,17 +127,43 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ProductController.cs" />
-    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Database.cs" />
-    <Compile Include="Models\Entities\Product.cs" />
-    <Compile Include="Models\Entities\User.cs" />
-    <Compile Include="Models\Tables\Products.cs" />
-    <Compile Include="Models\Tables\Users.cs" />
+    <Compile Include="Models\EF\Customer.cs">
+      <DependentUpon>e_commerce.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EF\e_commerce.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>e_commerce.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EF\e_commerce.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>e_commerce.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EF\e_commerce.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>e_commerce.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EF\Order.cs">
+      <DependentUpon>e_commerce.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EF\OrderDetail.cs">
+      <DependentUpon>e_commerce.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EF\Product.cs">
+      <DependentUpon>e_commerce.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EF\sysdiagram.cs">
+      <DependentUpon>e_commerce.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VM\ProductModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repo\OrderRepository.cs" />
+    <Compile Include="Repo\ProductRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -142,8 +174,25 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\EF\e_commerce.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>e_commerce.Context.cs</LastGenOutput>
+      <DependentUpon>e_commerce.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\EF\e_commerce.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>e_commerce.edmx</DependentUpon>
+      <LastGenOutput>e_commerce.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="Models\EF\e_commerce.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>e_commerce.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\EF\e_commerce.edmx.diagram">
+      <DependentUpon>e_commerce.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -169,11 +218,11 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="Views\Home\Cart.cshtml" />
+    <Content Include="Views\Home\MyOrders.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\User\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -187,6 +236,9 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -204,9 +256,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>60676</DevelopmentServerPort>
+          <DevelopmentServerPort>56746</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost:44343/</IISUrl>
+          <IISUrl>https://localhost:44315/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

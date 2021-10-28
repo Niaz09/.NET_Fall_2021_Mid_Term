@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 
-namespace E_Commerce
+namespace e_commerce
 {
     public class MvcApplication : System.Web.HttpApplication
     {

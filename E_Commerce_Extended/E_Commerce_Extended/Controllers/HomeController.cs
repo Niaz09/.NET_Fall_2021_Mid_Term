@@ -26,6 +26,5 @@ namespace E_Commerce_Extended.Controllers
 
             return View();
         }
-        
     }
 }

@@ -8,7 +8,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{6DA3CD86-56F0-41BD-9970-519C5FF9DFB4}</ProjectGuid>
+    <ProjectGuid>{F9E1D8CC-BAF9-4532-B55E-E16E76410716}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -18,7 +18,7 @@
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort>44323</IISExpressSSLPort>
+    <IISExpressSSLPort>44346</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -126,28 +126,31 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\E_Commerce.Context.cs">
+    <Compile Include="Models\PMS.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>E_Commerce.Context.tt</DependentUpon>
+      <DependentUpon>PMS.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\E_Commerce.cs">
+    <Compile Include="Models\PMS.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>E_Commerce.tt</DependentUpon>
+      <DependentUpon>PMS.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\E_Commerce.Designer.cs">
+    <Compile Include="Models\PMS.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>E_Commerce.edmx</DependentUpon>
+      <DependentUpon>PMS.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>PMS.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\User.cs">
-      <DependentUpon>E_Commerce.tt</DependentUpon>
+      <DependentUpon>PMS.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -160,24 +163,24 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\E_Commerce.Context.tt">
+    <Content Include="Models\PMS.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>E_Commerce.Context.cs</LastGenOutput>
-      <DependentUpon>E_Commerce.edmx</DependentUpon>
+      <LastGenOutput>PMS.Context.cs</LastGenOutput>
+      <DependentUpon>PMS.edmx</DependentUpon>
     </Content>
-    <Content Include="Models\E_Commerce.tt">
+    <Content Include="Models\PMS.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>E_Commerce.edmx</DependentUpon>
-      <LastGenOutput>E_Commerce.cs</LastGenOutput>
+      <DependentUpon>PMS.edmx</DependentUpon>
+      <LastGenOutput>PMS.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\E_Commerce.edmx">
+    <EntityDeploy Include="Models\PMS.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>E_Commerce.Designer.cs</LastGenOutput>
+      <LastGenOutput>PMS.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\E_Commerce.edmx.diagram">
-      <DependentUpon>E_Commerce.edmx</DependentUpon>
+    <Content Include="Models\PMS.edmx.diagram">
+      <DependentUpon>PMS.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -204,8 +207,9 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\User\Create.cshtml" />
-    <Content Include="Views\User\Login.cshtml" />
+    <Content Include="Views\Shared\_loginPartial.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -242,9 +246,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>56824</DevelopmentServerPort>
+          <DevelopmentServerPort>51030</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost:44323/</IISUrl>
+          <IISUrl>https://localhost:44346/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
