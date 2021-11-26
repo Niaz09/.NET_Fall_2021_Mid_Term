@@ -6,32 +6,39 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    public class ProductRepo
+    public class ProductRepo : IRepository<Product, int>
     {
-        static ECMEntities db;
-        static ProductRepo()
+        ECMEntities db;
+        public ProductRepo(ECMEntities db)
         {
-            db = new ECMEntities();
+            this.db = db;
         }
-        public static List<Product> GetAll()
+        public void Add(Product e)
+        {
+            db.Products.Add(e);
+            db.SaveChanges();
+        }
+        public void Delete(int id)
+        {
+            var e = db.Products.FirstOrDefault(en => en.Id == id);
+            db.Products.Remove(e);
+            db.SaveChanges();
+        }
+
+        public void Edit(Product e)
+        {
+            var p = db.Products.FirstOrDefault(en => en.Id == e.Id);
+            db.Entry(p).CurrentValues.SetValues(e);
+            db.SaveChanges();
+        }
+
+        public List<Product> Get()
         {
             return db.Products.ToList();
         }
-        public static Product Get(int id)
+        public Product Get(int id)
         {
             return db.Products.FirstOrDefault(e => e.Id == id);
-        }
-        public static void Edit(Product p)
-        {
-            var pr = db.Products.FirstOrDefault(e => e.Id == p.Id);
-            db.Entry(pr).CurrentValues.SetValues(p);
-            db.SaveChanges();
-        }
-        public static void Delete(int id)
-        {
-            var pr = db.Products.FirstOrDefault(e => e.Id == id);
-            db.Products.Remove(pr);
-            db.SaveChanges();
         }
     }
 }

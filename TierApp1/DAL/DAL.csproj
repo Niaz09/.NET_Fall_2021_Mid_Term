@@ -48,6 +48,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomerRepo.cs" />
+    <Compile Include="DataAccessFactory.cs" />
+    <Compile Include="IRepository.cs" />
     <Compile Include="ProductRepo.cs" />
     <Compile Include="Customer.cs">
       <DependentUpon>ECM.tt</DependentUpon>

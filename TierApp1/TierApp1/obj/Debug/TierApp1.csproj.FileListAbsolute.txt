@@ -73,3 +73,6 @@ C:\Users\Preeti Rahman\Desktop\.NET codes\TierApp1\TierApp1\obj\Debug\TierApp1.c
 C:\Users\Preeti Rahman\Desktop\.NET codes\TierApp1\TierApp1\obj\Debug\TierApp1.csproj.CoreCompileInputs.cache
 C:\Users\Preeti Rahman\Desktop\.NET codes\TierApp1\TierApp1\obj\Debug\TierApp1.dll
 C:\Users\Preeti Rahman\Desktop\.NET codes\TierApp1\TierApp1\obj\Debug\TierApp1.pdb
+C:\Users\Preeti Rahman\Desktop\.NET codes\TierApp1\TierApp1\bin\BEL.dll
+C:\Users\Preeti Rahman\Desktop\.NET codes\TierApp1\TierApp1\bin\BEL.pdb
+C:\Users\Preeti Rahman\Desktop\.NET codes\TierApp1\TierApp1\obj\Debug\TierApp1.csproj.CopyComplete
